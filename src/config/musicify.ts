@@ -14,22 +14,22 @@
  */
 const env = import.meta.env;
 
-export const DISCORD_CLIENT_ID: string = env.VITE_DISCORD_CLIENT_ID ?? "";
+export const DISCORD_CLIENT_ID: string = env['VITE_DISCORD_CLIENT_ID'] ?? "";
 // Permissions: Connect, Speak, Send Messages, Embed Links, Use Slash Commands
 const BOT_PERMISSIONS = "3148800";
 
 export const config = {
   discordClientId: DISCORD_CLIENT_ID,
   botInviteUrl:
-    (env.VITE_BOT_INVITE_URL as string | undefined) ??
+    (env['VITE_BOT_INVITE_URL'] as string | undefined) ??
     (DISCORD_CLIENT_ID
       ? `https://discord.com/oauth2/authorize?client_id=${DISCORD_CLIENT_ID}&permissions=${BOT_PERMISSIONS}&scope=bot%20applications.commands`
       : "#add-bot-not-configured"),
-  supportServerUrl: (env.VITE_SUPPORT_SERVER_URL as string | undefined) ?? "#",
-  githubUrl: (env.VITE_GITHUB_URL as string | undefined) ?? "#",
-  apiUrl: (env.VITE_API_URL as string | undefined) ?? "",
-  statusEndpoint: (env.VITE_STATUS_ENDPOINT as string | undefined) ?? "",
-  oauthRedirectUri: (env.VITE_OAUTH_REDIRECT_URI as string | undefined) ?? "",
+  supportServerUrl: (env['VITE_SUPPORT_SERVER_URL'] as string | undefined) ?? "#",
+  githubUrl: (env['VITE_GITHUB_URL'] as string | undefined) ?? "#",
+  apiUrl: (env['VITE_API_URL'] as string | undefined) ?? "",
+  statusEndpoint: (env['VITE_STATUS_ENDPOINT'] as string | undefined) ?? "",
+  oauthRedirectUri: (env['VITE_OAUTH_REDIRECT_URI'] as string | undefined) ?? "",
 };
 
 /** Builds the Discord OAuth2 login URL ("Continue with Discord"). Code exchange must happen server-side. */
